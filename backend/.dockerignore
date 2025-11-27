@@ -1,0 +1,49 @@
+# Backend Docker ignore — mirrors root .dockerignore to keep secrets out of backend build context
+# Env files and secrets
+.env
+.env.*
+credentials.json
+calendar.json
+gcs-credentials.json
+google-credentials.json
+service-account-*.json
+token.json
+backend/calendar.json
+
+# Python venvs and caches
+.venv
+venv
+env/
+ENV/
+__pycache__/
+*.py[cod]
+
+# Logs and temp
+*.log
+logs/
+tmp/
+temp/
+
+# Keys, certs, credentials
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+*.jks
+
+# Git and local metadata
+.git
+.gitignore
+.git-credentials
+.ssh/
+
+# Docker / packaging
+.dockerignore
+
+# Large or sensitive artifacts
+*.sqlite3
+*.db
+*.sql
+*.tar
+*.gz

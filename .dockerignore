@@ -1,0 +1,72 @@
+# Ignore node_modules
+**/node_modules
+
+# Ignore build artifacts
+**/dist
+**/build
+
+# Ignore .env files
+# Ignore node modules
+**/node_modules
+
+# Ignore build artifacts
+**/dist
+**/build
+**/.next
+
+# Python virtualenvs and caches
+.venv
+venv
+env/
+ENV/
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Ignore .env files (secrets)
+.env
+.env.*
+
+# Ignore logs
+*.log
+logs/
+**/*.log
+
+# Ignore git metadata
+.git
+.gitignore
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Keys, certs, credentials
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+*.jks
+credentials.json
+calendar.json
+gcs-credentials.json
+google-credentials.json
+service-account-*.json
+backend/calendar.json
+
+# SSH / VCS credentials
+.ssh/
+id_rsa
+id_*.pem
+.git-credentials
+
+# Docker / cloud ignores
+.dockerignore
+.gcloudignore
+
+# Large or sensitive artifacts
+*.sqlite3
+*.db
+*.sql
+*.tar
+*.gz

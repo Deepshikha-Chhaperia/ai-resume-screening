@@ -124,9 +124,6 @@ pids
 *.seed
 *.pid.lock
 
-# Docker ignore file
-.dockerignore
-
 # Tools and binaries (do not commit downloaded proxy)
 tools/
 tools/*
