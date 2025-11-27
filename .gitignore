@@ -17,7 +17,6 @@ backend/token.json
 
 # Environment files (local secrets)
 .env
-.env.*
 
 # Application and cloud credentials (explicit files only)
 # Do NOT ignore all JSON files — be specific so package.json and other
