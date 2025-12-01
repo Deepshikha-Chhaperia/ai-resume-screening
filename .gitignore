@@ -1,0 +1,128 @@
+# Environment files
+.env
+.env.local
+.env.production
+.env.development
+
+# Google Cloud credentials and other secrets
+**/credentials.json
+**/gcs-credentials.json
+**/service-account-*.json
+**/calendar.json
+**/token.json
+backend/calendar.json
+backend/token.json
+
+# Environment files (local secrets)
+.env
+
+# Application and cloud credentials (explicit files only)
+credentials.json
+gcs-credentials.json
+service-account-*.json
+**/calendar.json
+**/token.json
+backend/calendar.json
+backend/token.json
+
+# Local secret files and generated tokens
+token.json
+google-credentials.json
+GOOGLE_APPLICATION_CREDENTIALS
+
+# Ignore private keys and certs
+*.key
+*.pem
+*.p12
+
+# Do not commit setup scripts or DB schema files that may contain secrets
+setup_cloud_db.py
+database/schema.sql
+backend/setup_db.py
+backend/add_sample_data.py
+
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Resume uploads (local storage)
+backend/resumes/
+uploads/
+
+# Cache
+.cache/
+.parcel-cache/
+
+# Coverage reports
+coverage/
+*.lcov
+
+# Dependencies
+.pnp
+.pnp.js
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Tools and binaries (do not commit downloaded proxy)
+tools/
+tools/*
+**/cloud_sql_proxy.exe
+ 
+# Additional caches and package lockfiles
+.pytest_cache/

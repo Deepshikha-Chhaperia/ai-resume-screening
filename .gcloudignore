@@ -1,0 +1,56 @@
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# Node / frontend deps
+/node_modules
+/.pnp
+.pnp.js
+
+# Build artifacts
+/build
+/dist
+/.next
+
+# Test output
+/coverage
+
+# Env files and secrets (do NOT upload these)
+.env
+.env.*
+credentials.json
+calendar.json
+gcs-credentials.json
+google-credentials.json
+service-account-*.json
+backend/calendar.json
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Python
+/venv
+/.venv
+__pycache__/
+*.py[cod]
+
+# Git and local metadata
+.git
+.gitignore
+.git-credentials
+.ssh/
+
+# Docker / packaging
+.dockerignore
+Dockerfile
+
+# Large or sensitive files
+*.sqlite3
+*.db
+*.sql
+*.tar
+*.gz
