@@ -4,7 +4,7 @@ An intelligent recruiting assistant that automates resume processing and candida
 
 ## Demo
 
-A video demonstration of the application in action will be added soon. Stay tuned!
+https://github.com/user-attachments/assets/18722709-ae18-4f2c-9b6e-5b331422588a
 
 ## Features
 
