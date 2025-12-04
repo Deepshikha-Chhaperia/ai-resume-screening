@@ -162,9 +162,14 @@ docker run -d --name backend-container `
    backend-image:local
 ```
 
-**Note**: I have two Dockerfiles:
-- `Dockerfile` (root): Builds frontend + backend together (used for production Cloud Run deployment)
-- `backend/Dockerfile`: Builds backend only (used for local Docker development)
+**About the Dockerfiles in this project:**
+
+This project has two Dockerfiles for different purposes:
+
+- **`backend/Dockerfile`**: Builds backend-only image (Python + OCR tools). Used in Option 2 above for local Docker development.
+- **`Dockerfile` (root)**: Multi-stage build that creates frontend + backend together. Used for production Cloud Run deployment.
+
+**Note**: When you run `docker run postgres:13`, you are NOT using any Dockerfile from this project. You're pulling a pre-built PostgreSQL image from Docker Hub, maintained by the PostgreSQL team.
 
 ## Production deployment to Cloud Run
 
