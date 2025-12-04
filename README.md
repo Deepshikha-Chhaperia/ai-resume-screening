@@ -171,23 +171,19 @@ This project has two Dockerfiles for different purposes:
 
 **Note**: When you run `docker run postgres:13`, you are NOT using any Dockerfile from this project. You're pulling a pre-built PostgreSQL image from Docker Hub, maintained by the PostgreSQL team.
 
-## Production deployment to Cloud Run
+## Production Deployment to Google Cloud Run
 
-Use this when you want to run the service on Google Cloud. Below is an example (replace placeholders)
+The application is deployed to Google Cloud Run using continuous deployment from GitHub.
 
-```bash
-# Build and push the image
-docker build -t ai-resume-screening .
-docker tag ai-resume-screening gcr.io/PROJECT_ID/ai-resume-screening
-docker push gcr.io/PROJECT_ID/ai-resume-screening
+1. **Connect GitHub Repository**: Link your GitHub repository to Cloud Run
+2. **Automatic Build**: Cloud Build automatically builds the Docker image using the root `Dockerfile` whenever changes are pushed to the selected branch (e.g., `main`)
+3. **Automatic Deployment**: Cloud Run automatically deploys the new revision after a successful build
 
-# Deploy to Cloud Run
-gcloud run deploy SERVICE_NAME \
-   --image gcr.io/PROJECT_ID/SERVICE_NAME:TAG \
-   --platform managed \
-   --region YOUR_REGION \
-   --set-env-vars=KEY=VALUE
-```
+**What happens automatically:**
+- Cloud Build uses the multi-stage Dockerfile (builds frontend + backend together)
+- The built image is stored in Google Artifact Registry (depending on project settings) 
+- Cloud Run deploys the new revision without downtime
+- Environment variables are configured using the Cloud Run console
 
 For Gmail and Calendar integration workflow, see [Gmail & Calendar integration](docs/gmail_calendar.md).
 
