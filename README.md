@@ -98,37 +98,73 @@ GOOGLE_SERVICE_ACCOUNT_JSON=<path_to_your_service_account_json>
 RECRUITER_CALENDAR_ID=<your_recruiter_calendar_id>
 ```
 
-## Local Docker: build and run
+## Local Docker Setup
 
-Use this for fully local development and testing.
-1. Build the backend image:
+### Option 1: Run PostgreSQL Only (Backend runs locally on your machine)
+
+This is the simplest approach for local development. You run PostgreSQL in Docker but run the backend Python code directly on your machine.
+
+1. Start a PostgreSQL container:
+
+```powershell
+docker run -d --name resume-db `
+   -e POSTGRES_USER=your_username `
+   -e POSTGRES_PASSWORD=your_password `
+   -e POSTGRES_DB=resume_screening `
+   -p 5432:5432 `
+   -v resume-db-data:/var/lib/postgresql/data `
+   postgres:13
+```
+
+2. Update your `.env` file to connect to this database:
+
+```env
+DATABASE_URL=postgresql://your_username:your_password@localhost:5432/resume_screening
+```
+
+3. Run the backend locally:
+
+```bash
+cd backend
+python main.py
+```
+
+### Option 2: Run Everything in Docker (Full containerization)
+
+This approach runs both the database AND the backend in Docker containers.
+
+1. Start PostgreSQL container (same as above):
+
+```powershell
+docker run -d --name resume-db `
+   -e POSTGRES_USER=your_username `
+   -e POSTGRES_PASSWORD=your_password `
+   -e POSTGRES_DB=resume_screening `
+   -p 5432:5432 `
+   -v resume-db-data:/var/lib/postgresql/data `
+   postgres:13
+```
+
+2. Build the backend Docker image:
 
 ```powershell
 docker build -t backend-image:local -f backend/Dockerfile .
 ```
 
-2. Run a local Postgres container (PowerShell line-continuation shown):
-
-```powershell
-docker run -d --name resume-db-2 `
-   -e POSTGRES_USER=localuser `
-   -e POSTGRES_PASSWORD=localpass `
-   -e POSTGRES_DB=resume_screening `
-   -p 5433:5432 `
-   --restart=unless-stopped `
-   -v resume-db-data:/var/lib/postgresql/data `
-   postgres:13
-```
-
-3. Run the backend container (to run the backend inside Docker):
+3. Run the backend container, linking it to the database:
 
 ```powershell
 docker run -d --name backend-container `
-   --env DATABASE_URL="postgresql://localuser:localpass@resume-db-2:5432/resume_screening" `
+   --network host `
+   --env DATABASE_URL="postgresql://your_username:your_password@localhost:5432/resume_screening" `
    --env-file ./backend/.env `
    -p 5000:5000 `
    backend-image:local
 ```
+
+**Note**: I have two Dockerfiles:
+- `Dockerfile` (root): Builds frontend + backend together (used for production Cloud Run deployment)
+- `backend/Dockerfile`: Builds backend only (used for local Docker development)
 
 ## Production deployment to Cloud Run
 
